@@ -35,11 +35,8 @@ class Query
     public function getKeys()
     {
         $keys = new \ArrayIterator();
-        foreach ($this as $row) {
-            $keyExp = explode("=", $row);
-            if (isset($keyExp[0])) {
-                $keys[] = $keyExp[0];
-            }
+        foreach ($this as $key => $row) {
+            $keys->append($key);
         }
         return $keys;
     }
