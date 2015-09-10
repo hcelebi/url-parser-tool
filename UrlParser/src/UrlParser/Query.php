@@ -28,4 +28,19 @@ class Query
     {
         return urldecode(http_build_query($this->toArray()));
     }
+
+    /**
+     * @return array|\ArrayIterator
+     */
+    public function getKeys()
+    {
+        $keys = new \ArrayIterator();
+        foreach ($this as $row) {
+            $keyExp = explode("=", $row);
+            if (isset($keyExp[0])) {
+                $keys[] = $keyExp[0];
+            }
+        }
+        return $keys;
+    }
 }

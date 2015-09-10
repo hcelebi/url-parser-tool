@@ -94,4 +94,14 @@ class UrlParserTest extends PHPUnit_Framework_TestCase
         $string = $urlType->toString();
         $this->assertEquals("http://www.gittigidiyor.com/cep-telefonu?k=nokia&fmt=1", $urlType->toString());
     }
+
+    /**
+     * @test
+     */
+    public function ShouldBeReturnQueryKeys()
+    {
+        $url = "http://www.gittigidiyor.com/arama/?k=nokia&fmt=1";
+        $urlType = new Url($url);
+        $this->assertTrue($urlType->getQuery()->getKeys()->count() > 0);
+    }
 }
